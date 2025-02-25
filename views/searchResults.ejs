@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("./partials/header") %>
+    <title>Blogs - Search Page</title>
+</head>
+<body>
+    <%- include("./partials/navbar") %>
+
+    <div class="container mt-3">
+        <div class="row">
+            <h1 class="mb-5" id="blog-card-title">Search Results for "<%= query %>"</h1>
+
+            <% if (blogs.length === 0) { %>
+                <p>No results found.</p>
+            <% } else { %>
+                <% blogs.forEach(blog => { %>
+                    <div class="col-md-4">
+                        <div class="card" id="blog-card">
+                            <div class="card-header" id="card-header">
+                               <div class="card-title" id="blog-card-title"><%= blog.title %></div>
+                            </div>
+                            <div class="card-body">
+                                <img src="/<%= blog.coverImageURL %>" class="viewBlogImage" alt="Blog Image">
+                                <div class="card-text" id="viewBlogCardText"><%= blog.body.substring(0, 100) %>...</div>
+                                <a href="/blog/<%= blog._id %>" id="signup-btn" class="btn btn-primary btn-sm mt-2">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } %>
+
+        </div>
+    </div>
+
+    <%- include("./partials/footer") %>
+    <%- include("./partials/scripts") %>
+</body>
+</html>

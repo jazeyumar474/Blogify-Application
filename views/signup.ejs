@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("./partials/header") %>
+    <title>Blogs - SignUp Page</title>
+</head>
+<body>
+    <%- include("./partials/navbar") %>
+    <div class="container mt-2">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header" id="card-header">
+                        <div class="card-title" id="card-title">CREATE AN ACCOUNT</div>
+                    </div>
+                    <div class="card-body">
+                        <form action="/signup" method="post">
+                            <div class="mb-2">
+                                <label for="" class="form-label" id="signup-form-label">Full Name</label>
+                                <input type="text" name="fullName" class="form-control" id="signup-form-control" placeholder="Full Name" autocomplete="off">
+                            </div>
+                            <div class="mb-2">
+                                <label for="" class="form-label" id="signup-form-label">Email</label>
+                                <input type="email" name="email" class="form-control" id="signup-form-control" placeholder="Email Address" autocomplete="off">
+                            </div>
+                                <label for="" class="form-label" id="signup-form-label">Password</label>
+                            <div class="row g-0">
+                                    <div class="col-md-10">
+                                        <input type="password" name="password" class="form-control" id="password" placeholder="Password" autocomplete="off">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button class="btn" type="button" id="toggleButton" onclick="togglePassword()">Show</button>
+                                    </div>
+                                </div>
+                                <label for="confirmPassword" class="form-label mt-2">Confirm Password</label>
+                                <div class="row g-0">
+                                    <div class="col-md-10">
+                                        <input type="password" name="confirmPassword" class="form-control" id="confirmPassword" placeholder="Confirm Password" autocomplete="off">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button class="btn" type="button" id="toggleConfirmBtn" onclick="toggleConfirmPassword()">Show</button>
+                                    </div>
+                                </div>
+                            <div class="mt-2">
+                                <label for="" class="form-label" id="signup-form-label">Contact</label>
+                                <input type="number" name="contact" class="form-control" id="signup-form-control" placeholder="03xxxxxxxxx" autocomplete="off">
+                            </div>
+                            <div class="mt-2">
+                                <div class="d-grid">
+                                    <button class="btn btn-primary" id="signup-btn">Sign Up</button>
+                                </div>
+                                <div class="text-center">
+                                    <span id="signup-btn">Already Have An Account?</span><a href="/signin" class="btn text-dark" id="signup-btn">Login</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include("./partials/footer") %>
+    <%- include("./partials/scripts") %>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let passwordField = document.getElementById("password");
+            let toggleButton = document.getElementById("toggleButton");
+            let confirmPasswordField = document.getElementById("confirmPassword");
+            let confirmToggleButton = document.getElementById("toggleConfirmBtn");
+            function togglePassword(field, button) {
+                if (field.type === "password") {
+                    field.type = "text";
+                    button.textContent = "Hide";
+                } else {
+                    field.type = "password";
+                    button.textContent = "Show";
+                }
+            }
+            function checkInput() {
+                toggleButton.disabled = passwordField.value.trim() === "";
+                confirmToggleButton.disabled = confirmPasswordField.value.trim() === "";
+            }
+            passwordField.addEventListener("input", checkInput);
+            confirmPasswordField.addEventListener("input", checkInput);
+            checkInput();
+            toggleButton.addEventListener("click", function () {
+                togglePassword(passwordField, toggleButton);
+            });
+            confirmToggleButton.addEventListener("click", function () {
+                togglePassword(confirmPasswordField, confirmToggleButton);
+            });
+        });
+    </script>
+</body>
+</html>

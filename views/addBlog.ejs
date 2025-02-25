@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("./partials/header") %>
+    <title>Blogs - Add Page</title>
+</head>
+<body>
+    <%- include("./partials/navbar") %>
+    <div class="container mt-2">
+        <div class="row justify-content-center">
+                <div class="card">
+                    <div class="card-header" id="card-header">
+                        <div class="card-title" id="card-title">CREATE BLOGS</div>
+                    </div>
+                    <div class="card-body">
+                        <form action="/blog/addBlog" method="post" enctype="multipart/form-data">
+                            <div class="mb-2">
+                                <label for="" class="form-label" id="signup-form-label">Choose a name for your blog</label>
+                                <div id="form-text" class="form-text mb-2" >This is the title that will be displayed at the top of your Blog.</div>
+                                <input type="text" name="title" class="form-control" id="signup-form-control" placeholder="Title" autocomplete="off">
+                            </div>
+                            <div class="mb-2">
+                                <label for="" class="form-label" id="signup-form-label">Blog Content</label>
+                                <textarea class="form-control" rows="8" name="body" placeholder="Enter Your Content..." id="signup-form-control"></textarea>
+                            </div>
+                            <div class="mb-2">
+                                <label for="" class="form-label" id="signup-form-label">Choose Image</label>
+                                <input type="file" name="coverImageURL" class="form-control" id="signup-form-control">
+                            </div>
+                            <div class="mt-2">
+                                <div class="d-grid">
+                                    <button class="btn btn-primary" id="signup-btn">Add Blog</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <%- include("./partials/footer") %>
+    <%- include("./partials/scripts") %>
+</body>
+</html>

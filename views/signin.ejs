@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("./partials/header") %>
+    <title>Blogs - SignIn Page</title>
+</head>
+<body>
+    <%- include("./partials/navbar") %>
+    <div class="container mt-2">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header" id="card-header">
+                        <div class="card-title" id="card-title">ALREADY REGISTERED?</div>
+                    </div>
+                    <div class="card-body">
+                        <form action="/signin" method="post">
+                            <div class="mb-2">
+                                <label for="" class="form-label" id="signup-form-label">Email</label>
+                                <input type="email" name="email" class="form-control" id="signup-form-control" placeholder="Email Address" autocomplete="off">
+                            </div>
+                            <div class="mb-2">
+                                <label for="" class="form-label" id="signup-form-label">Password</label>
+                                <input type="password" name="password" class="form-control" id="signup-form-control" placeholder="Password" autocomplete="off">
+                            </div>
+                            <div class="mb-2">
+                                <div class="d-grid">
+                                    <button class="btn btn-primary" id="signup-btn">Sign In</button>
+                                </div>
+                                <div class="text-center">
+                                <span id="signup-btn">New customer?</span><a href="/signup" class="btn text-dark" id="signup-btn">Create An Account</a>
+                            </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include("./partials/footer") %>
+    <%- include("./partials/scripts") %>
+</body>
+</html>
